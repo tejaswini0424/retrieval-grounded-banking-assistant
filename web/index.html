@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banking Assistant</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">◈ &nbsp; Banking Assistant</a>
+    <nav aria-label="Account">
+      <span id="profile" hidden></span>
+      <button id="login">Log in</button>
+      <button id="register" class="primary">Create account</button>
+      <button id="logout" hidden>Log out</button>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Banking support</h1>
+      <p>Get answers about cards, transfers, statements, and online banking.</p>
+    </div>
+    <p id="status" role="status" hidden></p>
+    <div class="grid">
+      <section class="panel chat" aria-labelledby="chat-title">
+        <div class="section-head">
+          <h2 id="chat-title">Support assistant</h2>
+          <button id="clear" hidden>Clear chat</button>
+        </div>
+        <div id="messages" role="log" aria-label="Conversation"></div>
+        <div class="suggestions" aria-label="Suggested questions">
+          <button data-question="I lost my card">Lost card</button>
+          <button data-question="My transfer is pending">Pending transfer</button>
+          <button data-question="How do I download a statement?">Download a statement</button>
+        </div>
+        <p id="guest">Log in or create an account to start a conversation.</p>
+        <form id="chat-form" hidden>
+          <label for="question">Your question</label>
+          <div class="composer">
+            <input id="question" required maxlength="500" placeholder="Ask about a banking topic…">
+            <button class="primary" type="submit">Send</button>
+          </div>
+          <small>Keep card numbers, passwords, and security codes out of chat.</small>
+        </form>
+      </section>
+      <aside class="panel library" aria-labelledby="library-title">
+        <h2 id="library-title">Support library</h2>
+        <p>Open a guide or follow a source from an answer.</p>
+        <div id="sources"></div>
+      </aside>
+    </div>
+  </main>
+  <dialog id="auth">
+    <form id="auth-form">
+      <div class="section-head"><h2 id="auth-title"></h2><button id="close" type="button" aria-label="Close">×</button></div>
+      <label id="name-field">Name <input id="name" autocomplete="name" maxlength="80"></label>
+      <label>Email <input id="email" required type="email" autocomplete="email" maxlength="254"></label>
+      <label>Password <input id="password" required type="password" minlength="12" maxlength="128"></label>
+      <small>Use at least 12 characters.</small>
+      <p id="auth-error" role="alert" hidden></p>
+      <button id="auth-submit" class="primary" type="submit"></button>
+    </form>
+  </dialog>
+</body>
+</html>
